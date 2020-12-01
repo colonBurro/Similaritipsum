@@ -2,6 +2,8 @@
 
 namespace App\Objects;
 
+use App\Service\IdfIndex;
+
 class DocumentCollection
 {
     /**
@@ -37,6 +39,18 @@ class DocumentCollection
             array_push($documentData, $this->documents[$i]->getDocument());
         }
 
+        return $documentData;
+    }
+
+    public function calculateTfIdf($idfIndex)
+    {
+        for ($i=0; $i < count($this->documents); $i++) 
+        { 
+            foreach ($this->documents[$i]->getDocument() as $key => $value) 
+            {
+                $this->documents[$i] = $idfIndex[$key] * $value;
+            }  
+        } 
         return $documentData;
     }
 }
