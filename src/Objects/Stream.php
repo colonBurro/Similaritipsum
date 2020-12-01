@@ -39,7 +39,9 @@ class Stream
      */
     public function readDocument($stream)
     {
+        $this->document = new Document();
         $handle = @fopen($stream, "r");
+        $meta = stream_get_meta_data($handle);
 
         if ($handle) 
         {

@@ -75,7 +75,6 @@ class Document
                 $this->tokens[$key] = $value/$this->wordCount;
             }
         }
-
         return arsort($this->tokens);
     }
 }
